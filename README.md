@@ -60,7 +60,7 @@ To use the Docker daemon inside Minikube, you need to configure your shell to us
 This command sets up your environment to use the Docker daemon inside the Minikube VM.
 Note: If you have entered the above command in the terminal then you have to run the following command in the same terminal to use the Docker environment. Do not change the terminal.
 
-## Step 3: Build Docker Image
+## Step 4: Build Docker Image
 
 Build your Docker image using the Dockerfile you created. Run the following command in your terminal:
 
@@ -70,7 +70,7 @@ docker build -t my-node-app:latest .
 
 This command builds a Docker image named my-node-app with the latest tag.
 
-## Step 4: Create deployment.yaml file in root directory
+## Step 5: Create deployment.yaml file in root directory
 
 Create a deployment.yaml file in your project’s root directory. This file defines the Kubernetes deployment for your application. Below is an example:
 
@@ -102,7 +102,7 @@ spec:
 
 This YAML file specifies a deployment with two replicas of your application, using the Docker image you built.
 
-## Step 5: Create service.yaml file in root directory
+## Step 6: Create service.yaml file in root directory
 
 Create a service.yaml file in your project’s root directory. This file defines the Kubernetes service that exposes your application. Below is an example:
 
@@ -124,7 +124,7 @@ spec:
 
 This YAML file creates a service of type NodePort that maps port 3000 of your application to port 30001 on the host.
 
-## Step 6: Create a namespace in minikube
+## Step 7: Create a namespace in minikube
 
 Namespaces in Kubernetes provide a way to divide cluster resources between multiple users. Create a namespace for your application by running the following command:
 
@@ -138,7 +138,7 @@ To verify the namespace creation, you can list all namespaces:
 kubectl get namespace
 ```
 
-## Step 7: Deploy Application in Minikube
+## Step 8: Deploy Application in Minikube
 
 Deploy your application using the deployment.yaml file you created. Run the following command:
 
@@ -160,7 +160,7 @@ If you need to delete the deployment, run:
 kubectl delete -n myapp deployment my-node-app
 ```
 
-## Step 8: Create service in minikube
+## Step 9: Create service in minikube
 
 Create the service using the service.yaml file. Run the following command:
 
@@ -182,7 +182,7 @@ If you need to delete the service, run:
 kubectl delete -n myapp service my-node-app-service
 ```
 
-## Step 9: View and Manage Pods
+## Step 10: View and Manage Pods
 
 To view the pods in your namespace, use:
 
@@ -220,7 +220,7 @@ To verify pod connectivity, you can execute a command inside a pod:
 kubectl exec -it <pod-name> -n myapp -- /bin/sh
 ```
 
-## Step 10: Port Forward to Local Machine
+## Step 11: Port Forward to Local Machine
 
 To test your application outside of Minikube, you can port forward the service to your local machine:
 
@@ -230,7 +230,7 @@ kubectl port-forward -n myapp svc/my-node-app-service 30001:3000
 
 This command forwards port 30001 on your local machine to port 3000 on the service, allowing you to access your application via http://localhost:30001.
 
-## Step 11: Clean up
+## Step 12: Clean up
 
 ### Kubernetes Cleanup
 
